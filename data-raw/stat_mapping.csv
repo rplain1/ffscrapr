@@ -142,3 +142,4 @@ fg_missed_50_59,sleeper,fgmiss_50p
 fg_missed_60_,sleeper,fgmiss_50p
 pat_made,sleeper,xpm
 pat_missed,sleeper,xpmiss
+def_tackles_solo, sleeper, idp_tkl_solo
