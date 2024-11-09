@@ -33,7 +33,8 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:nflreadr::most_r
       .fns = as.numeric
     )) %>%
     dplyr::left_join(
-      ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
+      #TODO: add back in ffscrapr::
+      nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
       by = c("event" = "ff_event"),
       relationship = "many-to-many"
     ) %>%
@@ -50,6 +51,14 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:nflreadr::most_r
       ps,
       .nflverse_kicking_long(season))
   }
+
+  if ("LB" %in% league_rules$pos | "DB" %in% league_rules$pos | "DL" %in% league_rules$pos) {
+    ps <- dplyr::bind_rows(
+      ps,
+      .nflverse_def_long(season)
+    )
+  }
+
 
   fastr_weekly <- ros %>%
     dplyr::inner_join(

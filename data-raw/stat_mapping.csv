@@ -143,3 +143,12 @@ fg_missed_60_,sleeper,fgmiss_50p
 pat_made,sleeper,xpm
 pat_missed,sleeper,xpmiss
 def_tackles_solo, sleeper, idp_tkl_solo
+def_tackle_assists, sleeper, idp_tkl_ast
+def_tackles_for_loss, sleeper, idp_tkl_loss
+def_interceptions, sleeper, idp_int
+def_tds, sleeper, idp_def_td
+def_sacks, sleeper, idp_sack
+def_fumble_recovery_opp, sleeper, idp_fum_rec
+def_qb_hits, sleeper, idp_qb_hits
+def_fumbles_forced, sleeper, idp_ff
+def_pass_defended, sleeper, idp_pass_def

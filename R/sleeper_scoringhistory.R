@@ -24,7 +24,8 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:nflreadr::most_re
   league_rules <-
     ff_scoring(conn) %>%
     dplyr::left_join(
-      ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
+      #TODO: revert back to ffscrapr::nflfastr_stat_mapping
+      nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
       by = c("event" = "ff_event"),
       relationship = "many-to-many"
     )
