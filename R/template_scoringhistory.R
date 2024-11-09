@@ -52,7 +52,7 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:nflreadr::most_r
       .nflverse_kicking_long(season))
   }
 
-  if ("LB" %in% league_rules$pos | "DB" %in% league_rules$pos | "DL" %in% league_rules$pos) {
+  if (any(c("LB", "DB", "DL") %in% league_rules$pos)) {
     ps <- dplyr::bind_rows(
       ps,
       .nflverse_defense_long(season)
