@@ -39,6 +39,24 @@
   return(psk)
 }
 
+.nflverse_defense_long <- function(season) {
+  psk <- nflreadr::load_player_stats(season = season, stat_type = "defense") %>%
+    dplyr::select(
+      dplyr::any_of(c(
+        "season", "week", "player_id",
+        "def_tackles", "def_tackles_solo", "def_tackles_assists", "def_tackles_for_loss",
+        "def_fumbles_forced", "def_sacks", "def_qb_hits", "def_interceptions", "def_pass_defended",
+        "def_tds", "def_fumbles_recovery_opp", "def_safetey"
+      ))
+    ) %>%
+    tidyr::pivot_longer(
+      names_to = "metric",
+      cols = -c("season", "week", "player_id")
+    )
+  return(psk)
+}
+
+
 .nflverse_roster <- function(season){
   ros <- nflreadr::load_rosters(season) %>%
     dplyr::mutate(position = ifelse(.data$position %in% c("HB", "FB"), "RB", .data$position)) %>%
