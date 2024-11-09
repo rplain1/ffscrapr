@@ -40,6 +40,14 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:nflreadr::most_re
       .nflverse_kicking_long(season))
   }
 
+  if ("LB" %in% league_rules$pos | "DB" %in% league_rules$pos | "DL" %in% league_rules$pos) {
+    ps <- dplyr::bind_rows(
+      ps,
+      .nflverse_def_long(season)
+    )
+  }
+
+
   ros %>%
     dplyr::inner_join(
       ps,
